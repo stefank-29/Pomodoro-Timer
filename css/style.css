@@ -1,3 +1,24 @@
+#container{
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    width: 70%;
+    height: 70%;
+}
+
+
+#display{
+    display: flex;
+    margin: 50px auto;
+    height: 300px;
+    width: 300px;
+    border-radius: 100%;
+    background-color: aqua;
+    text-align: center;
+    
+}
 
 
 
