@@ -1,3 +1,17 @@
+html{
+    position: relative;
+    min-height: 100%;
+    font-family: 'Loto', serif;
+    font-size: 10px;
+}
+
+body{
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 #container{
     display: flex;
     margin: 0 auto;
@@ -8,18 +22,45 @@
     height: 70%;
 }
 
-
-#display{
-    display: flex;
-    margin: 50px auto;
-    height: 300px;
-    width: 300px;
-    border-radius: 100%;
-    background-color: aqua;
+#title{
     text-align: center;
+    font-size: 2rem;
+}
+#displayContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    height: 30rem;
+    width: 30rem;
+    border-radius: 100%;
+    border: 1px solid tomato;
+    background-color: transparent;
+    text-align: center;
+    font-size: 3rem;
+    padding: 10rem;
+    margin-bottom: 5rem;
     
 }
 
+#state{
+   
+   font-size: 5rem;
+
+}
+#display{
+    font-size: 10rem;
+    margin-top: 10rem !important;
+}
+#state, .spent-time{
+    line-height: 3rem;
+}
+
+#display, #state, .spent-time{
+    margin: 0;
+    text-align: center;
+}
 
 
 
