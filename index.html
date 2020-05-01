@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
 
@@ -10,40 +11,58 @@
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link href="https://fonts.googleapis.com/css2?family=Kameron&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
 
 </head>
 
 <body>
-    <div id="container">
-        <div id="title">Pomodoro Timer</div>
-        <div class="modes">
-
+  <div id="container">
+    <div id="title">Pomodoro Timer</div>
+    <div class="displayContainer">
+      <div class="settings">
+        <span class="settings-title">Pomodoro</span>
+        <div class="settingsChange">
+          <button><i class="fa fa-chevron-down"></i></button>
+          <span id="pomodoro-time">25</span>
+          <button><i class="fa fa-chevron-up"></i></button>
         </div>
-        <div id="displayContainer">
-          <p id ="state">Working</p>
-          <h1 id="display">25:00</h1>
-          <p class="spent-time">AAA</p>
-          <p class="spent-time">BBB</p>
+      </div>
+      <div id="clock">
+        <p id="state">Working</p>
+        <h1 id="display">25:00</h1>
+        <p class="spent-time">AAA</p>
+        <p class="spent-time">BBB</p>
+      </div>
+      <div class="settings">
+        <span class="settings-title">Break</span>
+        <div class="settingsChange">
+          <button><i class="fa fa-chevron-down"></i></button>
+          <span id="break-time">5</span>
+          <button><i class="fa fa-chevron-up"></i></button>
         </div>
-        <div id="commands">
-            <button id="play">Play</button>
-            <button id="reset">Reset</button>
-        </div>
-
+      </div>
+    </div>
+    <div id="commands">
+      <button id="play">Start</button>
+      <button id="reset">Reset</button>
     </div>
 
+  </div>
 
-    <footer>
-      <div>
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script>&nbsp;&nbsp;Created by Stefan Karaferovic
-           | <i class="fa fa-github"></i> <a href="https://github.com/stefank-29" target="_blank">stefank-29</a>
-      </div>
-    </footer>
- 
+
+  <footer>
+    <div>
+      Copyright &copy;
+      <script>document.write(new Date().getFullYear());</script>&nbsp;&nbsp;Created by Stefan Karaferovic
+      | <i class="fa fa-github"></i> <a href="https://github.com/stefank-29" target="_blank">stefank-29</a>
+    </div>
+  </footer>
+
 
 
   <script src="js/script.js"></script>
 </body>
+
 </html>

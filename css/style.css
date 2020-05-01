@@ -1,7 +1,7 @@
 html{
     position: relative;
     min-height: 100%;
-    font-family: 'Loto', serif;
+    font-family: 'Monserrat', sans-serif;
     font-size: 10px;
 }
 
@@ -9,43 +9,86 @@ body{
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 100%;
+    
 }
 
 
 #container{
     display: flex;
-    margin: 0 auto;
+    margin: 100px auto;
     flex-direction: column;
     align-self: center;
     justify-content: center;
     width: 70%;
-    height: 70%;
+    height: 100%;
 }
-
+/*--------title----------*/
 #title{
     text-align: center;
     font-size: 2rem;
+    margin: 2rem auto;
 }
-#displayContainer{
+
+
+/*******central display********/
+.displayContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5rem;
+}
+
+.settings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 12rem;
+    width: 10rem;
+    margin: auto 10rem;
+    font-size: 3rem;
+    font-weight: 600;
+}
+.settings-title{
+    letter-spacing: 0.2rem;
+    
+}
+.settingsChange{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 10rem;
+    height: 5rem;
+}
+
+
+.settingsChange button{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+#clock{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 50px auto;
-    height: 30rem;
-    width: 30rem;
+    height: 25rem;
+    width: 25rem;
     border-radius: 100%;
     border: 1px solid tomato;
     background-color: transparent;
     text-align: center;
     font-size: 3rem;
     padding: 10rem;
-    margin-bottom: 5rem;
+    
     
 }
 
 #state{
-   
    font-size: 5rem;
 
 }
@@ -62,8 +105,12 @@ body{
     text-align: center;
 }
 
+/**********control-buttons**********/
+#commands{
+    display: flex;
+    margin: 0 auto;
 
-
+}
 
 
 
