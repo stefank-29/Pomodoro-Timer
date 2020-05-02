@@ -1,12 +1,20 @@
 let interval;
 let secondsCountdown;
+let time;
 let relax = false;
 let work = true;
-let time;
 let start = false;
+let stopped = true;
 
-const display = document.querySelector("#display");
+let workingHours = 0;
+let workingMinutes = 0;
+let relaxHours = 0;
+let relaxMinutes = 0;
+
+
 const state = document.querySelector("#state");
+const display = document.querySelector("#display");
+
 
 const play = document.querySelector("#play");
 const reset = document.querySelector("#reset");
@@ -17,12 +25,14 @@ const breakTime = document.querySelector("#break-time");
 const workTime = document.querySelector("#spentWork");
 const relaxTime = document.querySelector("#spentBreak");
 
-/*const pmdDown = document.querySelector("#pmdDown");
+const pmdDown = document.querySelector("#pmdDown");
 const pmdUp = document.querySelector("#pmdUp");
 const breakUp = document.querySelector("#breakUp");
-const breakDown = document.querySelector("#breakDown");*/
-const buttonsMod = document.querySelectorAll("div.settingsChange button")
-buttonsMod.forEach(button => button.addEventListener('click', modifyTime));
+const breakDown = document.querySelector("#breakDown");
+
+const pomodoroBtn = document.querySelector("#pomodoroBtn");
+const breakBtn = document.querySelector("#breakBtn");
+
 
 function startPomodoro(seconds){
     startCountdown(seconds);
@@ -37,19 +47,21 @@ function startCountdown(seconds){
     const then = now + seconds * 1000;
     clearInterval(interval);
     displayTime(seconds); // because of 1 sec delay
-    // displayEndTime(then);
+    // displayEndTime(then); // end of timer time
     interval = setInterval(() => {
         secondsCountdown = Math.round((then - Date.now()) / 1000);
         if(secondsCountdown < 0){
             clearInterval(interval);
             secondsCountdown = 0;
             if(work){
+                displaySpentTime(pomodoroTime.textContent); // prikaz proteklog ucenja
                 work = false;
                 relax = true;
                 time = Number(breakTime.textContent) * 60;
                 state.textContent = "Relaxing"
                 startBreak(time);
             }else if(relax){
+                displaySpentTime(breakTime.textContent); // ukupno odmora
                 relax = false;
                 work = true;
                 time = Number(pomodoroTime.textContent) * 60;
@@ -70,7 +82,11 @@ function displayTime(seconds){
     const sec = Number(seconds) % 60;
     const dispTime = `${minutes > 9 ? minutes : '0' + minutes}:${sec > 9 ? sec : '0' + sec }`;
     display.textContent = dispTime;
-    document.title = dispTime;
+    if(work){
+        document.title = dispTime + " - Time to work!";
+    }else if(relax){
+        document.title = dispTime + " - Time for a break";
+    }
 }
 
 function displayEndTime(timestamp){
@@ -80,11 +96,33 @@ function displayEndTime(timestamp){
     workTime.textContent =`Be back at ${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? minutes : '0'+minutes}`;
 }
 
-play.addEventListener('click', () => {
+function displaySpentTime(minutes){
+    if(work){
+        workingMinutes += parseInt(minutes);
+        if(workingMinutes >= 60){
+            workingHours++;
+            workingMinutes %= 60; 
+        }
+        workTime.textContent = `${workingHours > 9 ? workingHours : '0' + workingHours}h ${workingMinutes > 9 ? workingMinutes : '0' + workingMinutes}m`;
+    }
+    if(relax){
+        relaxMinutes += parseInt(minutes);
+        if(relaxMinutes >= 60){
+            relaxHours++;
+            relaxMinutes % 60;
+        }
+        relaxTime.textContent = `${relaxHours > 9 ? relaxHours : '0'+relaxHours}h ${relaxMinutes > 9 ? relaxMinutes : '0'+relaxMinutes}m`;
+    }
+}
+
+play.addEventListener('click', playTimer);
+
+function playTimer(){
     if(work){
         if(!start){
             state.textContent = "Working"
             start = true;
+            stopped = false;
             play.textContent = "Pause";
             if(time == undefined){
                 time = Number(pomodoroTime.textContent) * 60;
@@ -105,6 +143,7 @@ play.addEventListener('click', () => {
         if(!start){
             state.textContent = "Relaxing";
             start = true;
+            stopped = false;
             play.textContent = "Pause";
             if(time == undefined){
                 time = Number(breakTime.textContent) * 60;
@@ -122,8 +161,10 @@ play.addEventListener('click', () => {
         
     }
 
-})
-reset.addEventListener('click', () => {
+}
+reset.addEventListener('click', resetTimer);
+
+function resetTimer() {
     if(work){
         clearInterval(interval);
         displayTime(pomodoroTime.textContent * 60);
@@ -133,14 +174,80 @@ reset.addEventListener('click', () => {
     }
     state.textContent = "";
     start = false;
+    stopped = true;
     play.textContent = "Start";
     time = undefined;
+}
+
+pomodoroBtn.addEventListener('click', () => {
+    work = true;
+    relax = false;
+    start = false;
+    stopped = true;
+    resetTimer();
 
 
 });
 
-function modifyTime(e){
-    console.log(e.target.getAttribute('id'));
-    
+breakBtn.addEventListener('click', () => {
+    work = false;
+    relax = true;
+    start = false;
+    stopped = true;
+    resetTimer();
 
-}
+});
+
+
+pmdDown.addEventListener('click', () =>{   
+    if(stopped){
+        let currTime = parseInt(pomodoroTime.textContent);
+        if(currTime > 1){
+            currTime--;
+        }
+        pomodoroTime.textContent = `${currTime > 9 ? currTime : '0' + currTime}`;
+        if(work){
+            displayTime(pomodoroTime.textContent * 60);
+        }
+    }
+   
+});
+pmdUp.addEventListener('click', () =>{
+    if(stopped){
+        let currTime = parseInt(pomodoroTime.textContent);
+        if(currTime < 60){
+            currTime++;
+        }
+        pomodoroTime.textContent = `${currTime > 9 ? currTime : '0' + currTime}`;
+        if(work){
+            displayTime(pomodoroTime.textContent * 60);
+        }
+    }
+   
+});
+breakDown.addEventListener('click', () =>{
+    if(stopped){
+        let currTime = parseInt(breakTime.textContent);
+        if(currTime > 1){
+            currTime--;
+        }
+        breakTime.textContent = `${currTime > 9 ? currTime : '0' + currTime}`;
+        if(relax){
+            displayTime(breakTime.textContent * 60);    
+        }
+    }
+    
+});
+breakUp.addEventListener('click', () =>{
+    if(stopped){
+        let currTime = parseInt(breakTime.textContent);
+        if(currTime < 60){
+            currTime++;
+        }
+        breakTime.textContent = `${currTime > 9 ? currTime : '0' + currTime}`;
+        if(relax){
+            displayTime(breakTime.textContent * 60);
+        }
+    }
+    
+});

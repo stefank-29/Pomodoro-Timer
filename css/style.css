@@ -4,13 +4,17 @@ html{
     font-family: 'Lato', sans-serif;
     font-size: 10px;
 }
-
+/*
+plava = rgb(76, 166, 169);
+tamno plava = rgb(73, 143, 193);
+crvena = rgb(240, 91, 86);
+transition: background-color 0.5s ease-in-out 0s;
+*/
 body{
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100%;
-    
 }
 
 
