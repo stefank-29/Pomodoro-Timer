@@ -108,7 +108,7 @@ function displaySpentTime(minutes){
             workingHours++;
             workingMinutes %= 60; 
         }
-        workTime.textContent = `${workingHours > 9 ? workingHours : '0' + workingHours}h ${workingMinutes > 9 ? workingMinutes : '0' + workingMinutes}m`;
+        workTime.textContent = `${workingHours > 9 ? workingHours : '0' + workingHours}h${workingMinutes > 9 ? workingMinutes : '0' + workingMinutes}m`;
     }
     if(relax){
         relaxMinutes += parseInt(minutes);
@@ -116,7 +116,7 @@ function displaySpentTime(minutes){
             relaxHours++;
             relaxMinutes % 60;
         }
-        relaxTime.textContent = `${relaxHours > 9 ? relaxHours : '0'+relaxHours}h ${relaxMinutes > 9 ? relaxMinutes : '0'+relaxMinutes}m`;
+        relaxTime.textContent = `${relaxHours > 9 ? relaxHours : '0'+relaxHours}h${relaxMinutes > 9 ? relaxMinutes : '0'+relaxMinutes}m`;
     }
 }
 

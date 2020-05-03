@@ -20,7 +20,7 @@ body{
 
 #container{
     display: flex;
-    margin: 100px auto;
+    margin: 10rem auto;
     flex-direction: column;
     align-self: center;
     justify-content: center;
@@ -40,7 +40,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 5rem;
 }
 
 .settings{
@@ -66,8 +65,6 @@ body{
     outline: none;
     
 }
-
-
 .settingsChange{
     display: flex;
     align-items: center;
@@ -84,7 +81,7 @@ body{
     cursor: pointer !important;
     
 }
-
+/******clock**********/
 #clock{
     position: relative;
     display: flex;
@@ -101,7 +98,13 @@ body{
     font-size: 3rem;
     padding: 10rem;
 }
-
+#clock p{
+    display: inline;
+}
+#clock img{
+    width: 2.4rem;
+    height: 2.4rem;
+}
 #state{
    font-size: 5rem;
 
@@ -113,8 +116,7 @@ body{
 #endTime{
     line-height: 3rem;
     font-size: 2.5rem;
-    text-align: center;
-    margin: 0.5rem auto 10rem;
+    margin: 0.5rem auto 8.5rem;
 }
 #stDisplays{
     position: absolute;
@@ -126,8 +128,7 @@ body{
 }
 
 #display, #state, .spent-time{
-    margin: 0.3rem;
-    text-align: center;
+    margin: 0.5rem;
 }
 
 /**********control-buttons**********/
@@ -135,11 +136,18 @@ body{
     display: flex;
     margin: 0 auto;
 
+
 }
-
-
-
-
+#commands button{
+    outline: none;
+    border: none;
+    background: none;
+    margin: 0 5rem;
+    margin-left: 6rem;
+    width: 5rem;
+    height: 5rem;
+    font-size: 4rem;
+}
 
 /******** footer **************/
 
