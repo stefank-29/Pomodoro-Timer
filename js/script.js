@@ -22,6 +22,7 @@ const reset = document.querySelector("#reset");
 const pomodoroTime = document.querySelector("#pomodoro-time");
 const breakTime = document.querySelector("#break-time");
 
+const endTime = document.querySelector("#endTime");
 const workTime = document.querySelector("#spentWork");
 const relaxTime = document.querySelector("#spentBreak");
 
@@ -47,7 +48,7 @@ function startCountdown(seconds){
     const then = now + seconds * 1000;
     clearInterval(interval);
     displayTime(seconds); // because of 1 sec delay
-    // displayEndTime(then); // end of timer time
+    displayEndTime(then); // end of timer time
     interval = setInterval(() => {
         secondsCountdown = Math.round((then - Date.now()) / 1000);
         if(secondsCountdown < 0){
@@ -93,7 +94,11 @@ function displayEndTime(timestamp){
     const end = new Date(timestamp);
     const hours = end.getHours();
     const minutes = end.getMinutes();
-    workTime.textContent =`Be back at ${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? minutes : '0'+minutes}`;
+    if(work){
+        endTime.textContent =`Work until: ${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? minutes : '0'+minutes}`;
+    }else if(relax){
+        endTime.textContent = `Relax until: ${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? minutes : '0'+minutes}`;
+    }
 }
 
 function displaySpentTime(minutes){
@@ -173,6 +178,7 @@ function resetTimer() {
         displayTime(breakTime.textContent * 60);
     }
     state.textContent = "";
+    endTime.textContent = "";
     start = false;
     stopped = true;
     play.textContent = "Start";
