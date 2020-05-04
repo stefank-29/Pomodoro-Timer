@@ -1,9 +1,10 @@
-html{
+    html{
     position: relative;
     min-height: 100%;
     font-family: 'Lato', sans-serif;
     font-size: 10px;
     overflow: hidden;
+
     
 }
 /*
@@ -17,6 +18,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100%;
+    background-color: rgb(240, 91, 86);
+    color: white;
 }
 
 
@@ -31,24 +34,23 @@ body{
 }
 /*--------title----------*/
 #title{
-    margin: 4rem auto;
+    margin: 2rem;
     text-align: center;
     font-size: 5rem;
     font-family: 'Pacifico', cursive;
 
   
 }
-
-
 /*******central display********/
 .displayContainer{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 1rem;
     /*visina*/
 }
 
-.settings{
+.settings{  
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,14 +64,19 @@ body{
 }
 .settings-title {
     font-size: 4rem;
-    font-family: 'Loto', sans-serif;
-    padding: 0.5rem 1.5rem;
-    border: 2px solid red;
-    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.1rem;
+    padding: 1rem 2rem;
+    color: white;
+    border: 4px solid white;
+    border-radius: 1rem;
     cursor: pointer;
     background: none;
     outline: none;
     
+}
+#setPom{
+    margin-right: 12rem;
 }
 .settingsChange{
     display: flex;
@@ -85,6 +92,7 @@ body{
     background-color: transparent;
     outline: none;
     cursor: pointer !important;
+    color: white;
     
     
 }
@@ -99,7 +107,7 @@ body{
     height: 25rem;
     width: 25rem;
     border-radius: 100%;
-    border: 3px solid tomato;
+    border: 3px solid white;
     background-color: transparent;
     text-align: center;
     font-size: 3rem;
@@ -150,10 +158,11 @@ body{
     border: none;
     background: none;
     margin: 0 5rem;
-    margin-left: 6rem;
-    width: 5rem;
+    margin-left: 6.5rem;
+    width: 4rem;
     height: 5rem;
     font-size: 5rem;
+    color: white;
 }
 
 /******** footer **************/
@@ -165,18 +174,18 @@ footer div{
     left: 0;
     width: 100%;
     height: auto;
-    padding: 15px 5px;
+    padding: 1.5rem 0.5rem;
     text-align: center;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-family: sans-serif;
-    color: rgb(90, 18, 18);
+    color: white;
     font-weight: 800;
     background-color: rgba(236, 81, 81, 0.3);
 }
 
 footer a{
     text-decoration: none;
-    color: rgb(90, 18, 18);
+    color: white;
 }
 footer a:hover{
     text-decoration: underline;
