@@ -11,7 +11,7 @@ let workingMinutes = 0;
 let relaxHours = 0;
 let relaxMinutes = 0;
 
-
+const body = document.body; 
 const state = document.querySelector("#state");
 const display = document.querySelector("#display");
 
@@ -35,8 +35,15 @@ const pomodoroBtn = document.querySelector("#pomodoroBtn");
 const breakBtn = document.querySelector("#breakBtn");
 
 
+function changeBgColor(){
+    body.classList.toggle("bgPomodoro");
+    body.classList.toggle("bgBreak");
+}
+
 function startPomodoro(seconds){
+    changeBgColor();
     startCountdown(seconds);
+    
 }
 
 function startBreak(seconds){
