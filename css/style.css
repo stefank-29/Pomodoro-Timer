@@ -3,6 +3,8 @@ html{
     min-height: 100%;
     font-family: 'Lato', sans-serif;
     font-size: 10px;
+    overflow: hidden;
+    
 }
 /*
 plava = rgb(76, 166, 169);
@@ -40,6 +42,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    /*visina*/
 }
 
 .settings{
@@ -135,8 +138,7 @@ body{
 #commands{
     display: flex;
     margin: 0 auto;
-
-
+    height: 10rem;
 }
 #commands button{
     outline: none;
@@ -146,7 +148,7 @@ body{
     margin-left: 6rem;
     width: 5rem;
     height: 5rem;
-    font-size: 4rem;
+    font-size: 5rem;
 }
 
 /******** footer **************/

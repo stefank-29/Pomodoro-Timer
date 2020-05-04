@@ -128,7 +128,8 @@ function playTimer(){
             state.textContent = "Working"
             start = true;
             stopped = false;
-            play.textContent = "Pause";
+            play.classList.toggle("fa-play"); // toggle bez fas samo fa-play
+            play.classList.toggle("fa-pause");
             if(time == undefined){
                 time = Number(pomodoroTime.textContent) * 60;
             }else{
@@ -138,7 +139,8 @@ function playTimer(){
         }else{
             start = false;
             state.textContent = "Paused"
-            play.textContent = "Start";
+            play.classList.toggle("fa-play");
+            play.classList.toggle("fa-pause");
             time = secondsCountdown;
             clearInterval(interval);
             interval = -1;
@@ -149,7 +151,8 @@ function playTimer(){
             state.textContent = "Relaxing";
             start = true;
             stopped = false;
-            play.textContent = "Pause";
+            play.classList.toggle("fa-play");
+            play.classList.toggle("fa-pause");  
             if(time == undefined){
                 time = Number(breakTime.textContent) * 60;
             }else{
@@ -159,7 +162,8 @@ function playTimer(){
         }else{
             start = false;
             state.textContent = "Paused";
-            play.textContent = "Start";
+            play.classList.toggle("fa-play");
+            play.classList.toggle("fa-pause");
             time = secondsCountdown;
             clearInterval(interval);
         }
@@ -181,7 +185,8 @@ function resetTimer() {
     endTime.textContent = "";
     start = false;
     stopped = true;
-    play.textContent = "Start";
+    play.classList.remove("fa-pause");
+    play.classList.add("fa-play");
     time = undefined;
 }
 
