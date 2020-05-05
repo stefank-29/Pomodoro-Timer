@@ -34,7 +34,7 @@ function notifyMe(body, icon, title) {   // provera da li browser podrzava notif
         
         let notification = new Notification(title, options);
         notification.onclick = function () {
-            window.open("http://carnes.cc");      
+            window.open("https://github.com/stefank-29");      
         };
         setTimeout(notification.close.bind(notification), 7000); 
     }
