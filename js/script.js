@@ -14,7 +14,7 @@ let relaxMinutes = 0;
 const body = document.body; 
 const state = document.querySelector("#state");
 const display = document.querySelector("#display");
-
+const title = document.querySelector("#title");
 
 const play = document.querySelector("#play");
 const reset = document.querySelector("#reset");
@@ -34,14 +34,19 @@ const breakDown = document.querySelector("#breakDown");
 const pomodoroBtn = document.querySelector("#pomodoroBtn");
 const breakBtn = document.querySelector("#breakBtn");
 
+const favicon = document.querySelector("#favicon");
 
-function changeBgColor(){
-    body.classList.toggle("bgPomodoro");
-    body.classList.toggle("bgBreak");
+const alarm = document.querySelector("#alarm");
+const click = document.querySelector("#click");
+
+function faviconToRed(){
+    favicon.setAttribute("href", "images/check-red-16x16.png");
+}
+function faviconToBlue(){
+    favicon.setAttribute("href", "images/check-blue-16x16.png");
 }
 
 function startPomodoro(seconds){
-    changeBgColor();
     startCountdown(seconds);
     
 }
@@ -62,18 +67,24 @@ function startCountdown(seconds){
             clearInterval(interval);
             secondsCountdown = 0;
             if(work){
+                alarm.play();
                 displaySpentTime(pomodoroTime.textContent); // prikaz proteklog ucenja
                 work = false;
                 relax = true;
                 time = Number(breakTime.textContent) * 60;
                 state.textContent = "Relaxing"
+                body.classList.remove("bgPomodoro");
+                body.classList.add("bgBreak");
                 startBreak(time);
             }else if(relax){
+                alarm.play();
                 displaySpentTime(breakTime.textContent); // ukupno odmora
                 relax = false;
                 work = true;
                 time = Number(pomodoroTime.textContent) * 60;
                 state.textContent = "Working";
+                body.classList.remove("bgBreak");
+                body.classList.add("bgPomodoro");
                 startPomodoro(time);
             }
         }else{
@@ -92,8 +103,10 @@ function displayTime(seconds){
     display.textContent = dispTime;
     if(work){
         document.title = dispTime + " - Time to work!";
+        faviconToRed();
     }else if(relax){
         document.title = dispTime + " - Time for a break";
+        faviconToBlue();
     }
 }
 
@@ -130,6 +143,8 @@ function displaySpentTime(minutes){
 play.addEventListener('click', playTimer);
 
 function playTimer(){
+    click.currTime = 0;
+    click.play();
     if(work){
         if(!start){
             state.textContent = "Working"
@@ -202,6 +217,8 @@ pomodoroBtn.addEventListener('click', () => {
     relax = false;
     start = false;
     stopped = true;
+    body.classList.remove("bgBreak");
+    body.classList.add("bgPomodoro");
     resetTimer();
 
 
@@ -212,10 +229,15 @@ breakBtn.addEventListener('click', () => {
     relax = true;
     start = false;
     stopped = true;
+    body.classList.remove("bgPomodoro");
+    body.classList.add("bgBreak");
     resetTimer();
 
 });
 
+title.addEventListener('click', () => {
+    location.reload();
+});
 
 pmdDown.addEventListener('click', () =>{   
     if(stopped){

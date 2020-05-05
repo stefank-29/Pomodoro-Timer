@@ -8,7 +8,7 @@
   <title>Pomodoro Timer</title>
 
   <link rel="stylesheet" href="css/style.css?v=1.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/pomodoro-favicon.png" id="favicon">
   <link href="https://fonts.googleapis.com/css2?family=Kameron&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="bgPomodoro">
+<body>
   <div id="container">
     <div id="title">Pomodoro Timer</div>
     <div class="displayContainer">
@@ -67,7 +67,8 @@
     </div>
   </footer>
 
-
+  <audio id="alarm" src="sounds/clock-alarm.wav"></audio>
+  <audio id="click" src="sounds/button-click.wav"></audio>
 
   <script src="js/script.js"></script>
 </body>
