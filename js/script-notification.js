@@ -10,26 +10,26 @@
     let n = new Notification(title, options);
 }*/
 
-function notifyMe(body, icon, title) {   // provera da li browser podrzava notifikacije i da li je dao dozvolu
+function notifyMe(body, image, title) {   // provera da li browser podrzava notifikacije i da li je dao dozvolu
     if (!("Notification" in window)) {
       alert("This browser does not support system notifications");
     }
     else if (Notification.permission === "granted") {
-      notify(body, icon, title);
+      notify(body, image, title);
     }
     else if (Notification.permission !== 'denied') {
       Notification.requestPermission(function (permission) {
         if (permission === "granted") {
-          notify(body, icon, title);
+          notify(body, image, title);
         }
       });
     }
 }
     
-    function notify(body, icon, title) {
+    function notify(body, image, title) {
         let options = {
             body: body,
-            icon: icon,
+            image: image,
         };
         
         let notification = new Notification(title, options);
