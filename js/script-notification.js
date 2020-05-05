@@ -10,26 +10,26 @@
     let n = new Notification(title, options);
 }*/
 
-function notifyMe(body, image, title) {   // provera da li browser podrzava notifikacije i da li je dao dozvolu
+function notifyMe(body, icon, title) {   // provera da li browser podrzava notifikacije i da li je dao dozvolu
     if (!("Notification" in window)) {
       alert("This browser does not support system notifications");
     }
     else if (Notification.permission === "granted") {
-      notify(body, image, title);
+      notify(body, icon, title);
     }
     else if (Notification.permission !== 'denied') {
       Notification.requestPermission(function (permission) {
         if (permission === "granted") {
-          notify(body, image, title);
+          notify(body, icon, title);
         }
       });
     }
 }
     
-    function notify(body, image, title) {
+    function notify(body, icon, title) {
         let options = {
             body: body,
-            image: image,
+            icon: icon,
         };
         
         let notification = new Notification(title, options);
@@ -39,3 +39,10 @@ function notifyMe(body, image, title) {   // provera da li browser podrzava noti
         setTimeout(notification.close.bind(notification), 7000); 
     }
   
+
+/*window.onload = function () {
+    //alert("Asdd");
+    workingMinutes = localStorage.getItem("workTimeM");
+    workingHours = localStorage.getItem("workTimeH");
+    displaySpentTime(0);
+}*/
