@@ -68,6 +68,7 @@ function startCountdown(seconds){
             secondsCountdown = 0;
             if(work){
                 alarm.play();
+                notifyMe("It's time for a break", "images/timer-icon.png", "Pomodoro timer");
                 displaySpentTime(pomodoroTime.textContent); // prikaz proteklog ucenja
                 work = false;
                 relax = true;
@@ -78,6 +79,7 @@ function startCountdown(seconds){
                 startBreak(time);
             }else if(relax){
                 alarm.play();
+                notifyMe("It's time for work", "images/timer-icon", "Pomodoro timer");
                 displaySpentTime(breakTime.textContent); // ukupno odmora
                 relax = false;
                 work = true;
@@ -291,3 +293,4 @@ breakUp.addEventListener('click', () =>{
     }
     
 });
+
