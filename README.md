@@ -3,4 +3,4 @@ This project is an online Pomodoro Timer built with JavaScript, CSS and HTML ski
 
 ![Image of project](timer.gif)
 
-## [Live demo of the project](https://stefank-29.github.io/Calculator/)
+## [Live demo of the project](https://stefank-29.github.io/Pomodoro-Timer/)
